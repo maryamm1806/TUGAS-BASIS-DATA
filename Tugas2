@@ -1,0 +1,63 @@
+-- Nama : Maryam
+-- Nim  : D0224506
+
+Tugas 2 menggunakan Where and Between pada database yang telah dibuat
+
+1. mencari pelanggan yang berasal dari kota jakarta
+MariaDB [toko_online]> select * from pelanggan
+    -> where alamat = 'jakarta';
++--------------+------+----------------+---------+
+| id_pelanggan | nama | email          | alamat  |
++--------------+------+----------------+---------+
+|            1 | Alya | alya@gmail.com | Jakarta |
++--------------+------+----------------+---------+
+
+2. mencari produk dengan harga diatas 500.000
+MariaDB [toko_online]> select * from produk
+    -> where harga >500000;
++-----------+-----------------+---------+------+
+| id_produk | nama_produk     | harga   | stok |
++-----------+-----------------+---------+------+
+|         1 | Laptop Asus     | 8500000 |   10 |
+|         4 | Monitor 24 Inch | 1700000 |   15 |
+|         7 | Harddisk 1TB    |  650000 |   20 |
+|        10 | Printer Canon   | 1200000 |    8 |
++-----------+-----------------+---------+------+
+
+3. mencari transaksi milik pelanggan dengan id = 5
+MariaDB [toko_online]> select * from transaksi
+    -> where id_pelanggan = 5;
++--------------+--------------+-----------+--------+------------+
+| id_transaksi | id_pelanggan | id_produk | jumlah | tanggal    |
++--------------+--------------+-----------+--------+------------+
+|            5 |            5 |         4 |      1 | 2025-01-05 |
++--------------+--------------+-----------+--------+------------+
+
+4. mencari produk dengan harga antara 100.000 sampai 500.000
+MariaDB [toko_online]> SELECT * FROM produk
+    -> WHERE harga BETWEEN 100000 AND 500000;
++-----------+-------------------+--------+------+
+| id_produk | nama_produk       | harga  | stok |
++-----------+-------------------+--------+------+
+|         2 | Keyboard RGB      | 350000 |   25 |
+|         3 | Mouse Wireless    | 150000 |   40 |
+|         6 | SSD 256GB         | 450000 |   18 |
+|         8 | Headset Gaming    | 250000 |   30 |
+|         9 | Webcam HD         | 200000 |   12 |
+|        13 | RAM 8GB DDR4      | 400000 |   17 |
+|        14 | Microphone USB    | 300000 |   14 |
+|        15 | Speaker Bluetooth | 180000 |   28 |
++-----------+-------------------+--------+------+
+
+5. mencari produk yang harganya 100.000-500.000 yang stoknya > 20
+MariaDB [toko_online]> SELECT * FROM produk
+    -> WHERE harga BETWEEN 100000 AND 500000
+    -> AND stok > 20;
++-----------+-------------------+--------+------+
+| id_produk | nama_produk       | harga  | stok |
++-----------+-------------------+--------+------+
+|         2 | Keyboard RGB      | 350000 |   25 |
+|         3 | Mouse Wireless    | 150000 |   40 |
+|         8 | Headset Gaming    | 250000 |   30 |
+|        15 | Speaker Bluetooth | 180000 |   28 |
++-----------+-------------------+--------+------+
